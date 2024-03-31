@@ -37,3 +37,6 @@
 
 #outputs in directories
 outputs*/*.txt
+
+# build
+build*/
