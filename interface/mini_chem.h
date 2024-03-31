@@ -9,7 +9,7 @@
 
 #define mini_ch_dlsode_ FEXPAND(mini_ch_i_dlsode, mini_ch_dlsode)
 #define interp_ce_table_ FEXPAND(mini_ch_ce_interp, interp_ce_table)
-#define read_react_list_ FEXPAND(mini_ch_read_react_list, read_react_list)
+#define read_react_list_ FEXPAND(mini_ch_read_reac_list, read_react_list)
 
 #ifdef __cplusplus
 extern "C" {

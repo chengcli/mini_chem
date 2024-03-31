@@ -48,5 +48,5 @@ set(MINICHEM_INCLUDE_DIR
   "${CMAKE_CURRENT_SOURCE_DIR}"
   CACHE INTERNAL "mini_chem include directory")
 
-#add_subdirectory(tests)
+add_subdirectory(tests)
 

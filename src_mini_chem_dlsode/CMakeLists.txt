@@ -17,7 +17,7 @@ set(_${namel}_src
     )
 
 add_library(${namel}_${buildl}
-    OBJECT
+    STATIC
     ${_${namel}_src}
     )
 
