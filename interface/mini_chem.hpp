@@ -7,6 +7,8 @@
 
 void set_fix_sized_string(char dest[], const std::string &src, int len);
 
+void interp_ce_table(int n_sp, double T_in, double P_in, double *VMR, double *mu, std::string network);
+
 class MiniChem {
  public:
   static constexpr int kMaxStringLength = 200;
@@ -31,7 +33,8 @@ class MiniChem {
   }
 
   void Initialize();
-  void Run(double T_in, double P_in, double t_end, double *VMR) const;
+  void Run(double T_in, double P_in, double t_end,
+           double *VMR, std::string network) const;
  
  protected:
   int nspecies_;

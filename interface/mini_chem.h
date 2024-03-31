@@ -15,11 +15,23 @@
 extern "C" {
 #endif 
 
-void interp_ce_table_(int n_sp, double T_in, double P_in, double *VMR, double mu, char const * table);
+void interp_ce_table_(int const *n_sp, 
+                      double const *T_in,
+                      double const *P_in, 
+                      double *VMR, 
+                      double *mu, 
+                      char const * table);
 
-void read_react_list_(char const * data_file, char const * sp_file, char const * net_dir, char const * met);
+void read_react_list_(char const *data_file, 
+                      char const *sp_file, 
+                      char const *net_dir, 
+                      char const *met_str);
 
-void mini_ch_dlsode_(double T_in, double P_in, double t_end, double *VMR, char const * network);
+void mini_ch_dlsode_(double const *T_in, 
+                     double const *P_in, 
+                     double const *t_end,
+                     double *VMR, 
+                     char const * network);
 
 #ifdef __cplusplus
 } //  extern "C"
