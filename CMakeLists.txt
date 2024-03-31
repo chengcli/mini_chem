@@ -42,7 +42,7 @@ message(STATUS "2. Set up project specific configuration ...")
 
 message(STATUS "Set up rrtmg_sw source codes")
 add_subdirectory(src_mini_chem_dlsode)
-#add_subdirectory(interface)
+add_subdirectory(interface)
 
 set(MINICHEM_INCLUDE_DIR
   "${CMAKE_CURRENT_SOURCE_DIR}"

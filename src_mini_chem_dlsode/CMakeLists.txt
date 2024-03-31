@@ -7,6 +7,7 @@ set(namel minichem)
 string(TOUPPER ${namel} nameu)
 
 set(_${namel}_src
+    dlsode.f
     mini_ch_ce_interp.f90 
     mini_ch_chem.f90
     mini_ch_class.f90
