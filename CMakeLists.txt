@@ -1,13 +1,9 @@
-# Include path
-#
-#   include: minichem
-#
-# Library files
+# This package generates the following targets:
 #   
-#   library: libminichem_debug.a
-#   library: libminichem_release.a
+#   minichemf: libminichem_debug.a or libminichem_release.a
+#   minichem++: OBJECT library
 #
-# Usage would be
+# Usage:
 #
 #   include_directories(${MINICHEM_INCLUDE_DIR})
 #   target_link_libraries(minichem::minichemf minichem::minichem++)
@@ -40,15 +36,13 @@ message(STATUS "1. Set up project compiler flags ...")
 message(STATUS "Include ${CMAKE_CURRENT_SOURCE_DIR}/cmake/compilers.cmake")
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/compilers.cmake)
 
-## 2. set up project specific configuration ##
-message(STATUS "2. Set up project specific configuration ...")
-
-message(STATUS "3. Set up minichem source codes")
+## 2. set up project source codes ##
+message(STATUS "2. Set up minichem source codes")
 add_subdirectory(src_mini_chem_dlsode)
 add_subdirectory(interface)
 
 set(MINICHEM_INCLUDE_DIR 
   "${CMAKE_CURRENT_SOURCE_DIR}"
-  CACHE PATH INTERNAL "Path to minichem include directory")
+  CACHE PATH "Path to minichem include directory")
 
 add_subdirectory(tests)

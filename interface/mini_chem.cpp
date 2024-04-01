@@ -3,8 +3,8 @@
 #include <cstring>
 
 // minichem
+#include <mini_chem.h>
 #include "mini_chem.hpp"
-#include "mini_chem.h"
 
 void MiniChem::Initialize() {
   read_react_list_(data_file_, species_file_,
