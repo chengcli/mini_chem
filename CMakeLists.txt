@@ -1,28 +1,31 @@
-# Installs mini_chem library
+# Include path
+#
+#   include: minichem
+#
+# Library files
 #   
 #   library: libminichem_debug.a
 #   library: libminichem_release.a
 #
-# Define the following variables
+# Usage would be
 #
-#   MINICHEM_INCLUDE_DIR
-#   MINICHEM_LIBRARY_DEBUG
-#   MINICHEM_LIBRARY_RELEASE
-#
-# Normal usage would be
-#
-#   include_directories( ${MINICHEM_INCLUDE_DIR})
-#   target_link_libraries( ${MINICHEM_LIBRARY_DEBUG})
-#
+#   include_directories(${MINICHEM_INCLUDE_DIR})
+#   target_link_libraries(minichem::minichemf minichem::minichem++)
+
 cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(
-  MINICHEM
+  minichem
+  HOMEPAGE_URL https://github.com/chengcli/mini_chem
   LANGUAGES CXX Fortran
+  DESCRIPTION "C++ interface to the minichem library"
   )
 
 if (NOT CMAKE_BUILD_TYPE)
@@ -44,13 +47,12 @@ include(${CMAKE_SOURCE_DIR}/cmake/compilers.cmake)
 ## 2. set up project specific configuration ##
 message(STATUS "2. Set up project specific configuration ...")
 
-message(STATUS "Set up rrtmg_sw source codes")
+message(STATUS "3. Set up minichem source codes")
 add_subdirectory(src_mini_chem_dlsode)
 add_subdirectory(interface)
 
-set(MINICHEM_INCLUDE_DIR
+set(MINICHEM_INCLUDE_DIR 
   "${CMAKE_CURRENT_SOURCE_DIR}"
-  CACHE INTERNAL "mini_chem include directory")
+  CACHE PATH INTERNAL "Path to minichem include directory")
 
 add_subdirectory(tests)
-

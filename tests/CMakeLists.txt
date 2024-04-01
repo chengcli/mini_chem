@@ -7,7 +7,7 @@ macro(setup_test namel)
 
   set_target_properties(${namel}.${buildl}
                         PROPERTIES 
-                        COMPILE_FLAGS ${CMAKE_CXX_FLAGS_${buildu}})
+                        COMPILE_FLAGS ${MY_CXX_FLAGS})
 
   target_include_directories(
     ${namel}.${buildl}
@@ -15,7 +15,8 @@ macro(setup_test namel)
 
   target_link_libraries(
     ${namel}.${buildl}
-    ${MINICHEM_LIBRARY_${buildu}}
+    minichem::minichemf
+    minichem::minichem++
     )
 
   add_test(NAME ${namel}.${buildl} COMMAND ${namel}.${buildl})

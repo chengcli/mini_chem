@@ -5,7 +5,7 @@
 #ifndef INTERFACE_MINI_CHEM_H_
 #define INTERFACE_MINI_CHEM_H_
 
-#define FEXPAND(mname,fname)   __ ## mname ## _ ## MOD ## _ ## fname
+#define FEXPAND(mname,fname)   __ ## mname ## _MOD_ ## fname
 
 #define mini_ch_dlsode_ FEXPAND(mini_ch_i_dlsode, mini_ch_dlsode)
 #define interp_ce_table_ FEXPAND(mini_ch_ce_interp, interp_ce_table)

@@ -1,56 +1,79 @@
-# Checks for compiler features (such as C++14 support) and compiler
-# specific bugs that
-#   - usually set up further configuration (such as preprocessor
-#     definitions)
-#   - disable a specific flag for a specific compiler version.
+# Setup for GCC compiler:
 #
-
-# General setup for GCC and compilers sufficiently close to GCC:
-#
-if (CMAKE_Fortran_COMPILER_ID MATCHES "GNU")
-  set(CMAKE_Fortran_FLAGS_RELEASE
-    "-O3 -pipe"
-    )
-  set(KNOWN_COMPILER TRUE)
+if(CMAKE_Fortran_COMPILER_ID MATCHES "GNU")
+  if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(MY_Fortran_FLAGS "-g3")
+  elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(MY_Fortran_FLAGS "-O3 -pipe")
+  else()
+    message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
+  endif()
+  set(KNOWN_FORTRAN_COMPILER TRUE)
 endif()
 
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+  if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(MY_CXX_FLAGS "-g3")
+  elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(MY_CXX_FLAGS "-O3")
+  else()
+    message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
+  endif()
+  set(KNOWN_CXX_COMPILER TRUE)
+endif()
+
+# Setup for Clang compiler:
+#
 if (CMAKE_Fortran_COMPILER_ID MATCHES "Clang" )
-  set(CMAKE_Fortran_FLAGS_RELEASE
-    "-O3 -pipe"
-    )
-  set(KNOWN_COMPILER TRUE)
+  if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(MY_Fortran_FLAGS "-g3")
+  elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(MY_Fortran_FLAGS "-O3 -pipe")
+  else()
+    message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
+  endif()
+  set(KNOWN_FORTRAN_COMPILER TRUE)
 endif()
 
-#
-# Setup for ICC compiler (version >= 10):
-#
-if (CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
-	message(FATAL_ERROR "\n"
-		"Intel complier not implemented.\n\n"
-		)
-	#  set(_flags ${CMAKE_SOURCE_DIR}/cmake/compiler_flags_intel.cmake)
-	# message(STATUS "Include ${_flags}")
-	#  include(${_flags})
-	#  set(KNOWN_COMPILER TRUE)
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(MY_CXX_FLAGS "-g3")
+  elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(MY_CXX_FLAGS "-O3")
+  else()
+    message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
+  endif()
+  set(KNOWN_CXX_COMPILER TRUE)
 endif()
 
+# Setup for ICC compiler:
 #
-# Setup for MSVC compiler (version >= 2012):
-#
-if (CMAKE_Fortran_COMPILER_ID MATCHES "MSVC")
-	message(FATAL_ERROR "\n"
-		"MSVC compiler not implemented.\n\n"
-        )
-	#set(_flags ${CMAKE_SOURCE_DIR}/cmake/compiler_flags_msvc.cmake)
-	#message(STATUS "Include ${_flags}")
-	#include(${_flags})
-	#set(KNOWN_COMPILER TRUE)
+if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
+  if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(MY_Fortran_FLAGS "-g3")
+  elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(MY_Fortran_FLAGS "-O3 -pipe")
+  else()
+    message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
+  endif()
+  set(KNOWN_FORTRAN_COMPILER TRUE)
 endif()
 
-if (NOT KNOWN_COMPILER)
-  message(FATAL_ERROR "\n"
-    "Unknown compiler!\n"
-    "If you're serious about it, set SETUP_DEFAULT_COMPILER_FLAGS=OFF "
-    "and set the relevant compiler options by hand.\n\n"
-    )
+if(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
+  if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(MY_CXX_FLAGS "-g3")
+  elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(MY_CXX_FLAGS "-O3")
+  else()
+    message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
+  endif()
+  set(KNOWN_CXX_COMPILER TRUE)
+endif()
+
+if (NOT KNOWN_FORTRAN_COMPILER)
+  message(FATAL_ERROR "\nUnknown Fortran compiler!\n")
+endif()
+
+if (NOT KNOWN_CXX_COMPILER)
+  message(FATAL_ERROR "\nUnknown C++ compiler!\n")
 endif()

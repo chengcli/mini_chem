@@ -5,7 +5,7 @@
 #include <iostream>
 
 // mini_chem
-#include <mini_chem/mini_chem.hpp>
+#include <minichem/mini_chem.hpp>
 
 int main(int argc, char **argv) {
   MiniChem mc;
