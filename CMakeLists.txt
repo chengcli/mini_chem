@@ -17,10 +17,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
 project(
   minichem
   HOMEPAGE_URL https://github.com/chengcli/mini_chem
@@ -41,7 +37,7 @@ LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/)
 
 ## 1. set up compiler flags ##
 message(STATUS "1. Set up project compiler flags ...")
-message(STATUS "Include ${CMAKE_SOURCE_DIR}/cmake/compilers.cmake")
+message(STATUS "Include ${CMAKE_CURRENT_SOURCE_DIR}/cmake/compilers.cmake")
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/compilers.cmake)
 
 ## 2. set up project specific configuration ##

@@ -23,7 +23,7 @@ add_library(${namel}_${buildl}
 
 set_target_properties(${namel}_${buildl}
     PROPERTIES
-    COMPILE_FLAGS ${MY_Fortran_FLAGS}
+    COMPILE_FLAGS ${${PROJECT_NAME}_Fortran_FLAGS}
     )
 
 add_library(minichem::minichemf ALIAS ${namel}_${buildl})

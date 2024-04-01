@@ -17,7 +17,7 @@ add_library(${namel}_${buildl}
 
 set_target_properties(${namel}_${buildl}
     PROPERTIES
-    COMPILE_FLAGS ${MY_CXX_FLAGS}
+    COMPILE_FLAGS ${${PROJECT_NAME}_CXX_FLAGS}
     )
 
 add_library(minichem::minichem++ ALIAS ${namel}_${buildl})
