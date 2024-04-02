@@ -15,7 +15,6 @@ macro(minichem_setup_test namel)
 
   target_link_libraries(
     ${namel}.${buildl}
-    minichem::minichemf
     minichem::minichem++
     )
 

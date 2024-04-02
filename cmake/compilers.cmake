@@ -2,14 +2,15 @@
 #
 if(CMAKE_Fortran_COMPILER_ID MATCHES "GNU")
   if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(${PROJECT_NAME}_Fortran_FLAGS "-g3" 
+    set(${PROJECT_NAME}_Fortran_FLAGS "-g3 -std=legacy" 
       CACHE INTERNAL "${PROJECT_NAME} Fortran compiler flags")
   elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
-    set(${PROJECT_NAME}_Fortran_FLAGS "-O3 -pipe"
+    set(${PROJECT_NAME}_Fortran_FLAGS "-O3 -pipe -std=legacy"
       CACHE INTERNAL "${PROJECT_NAME} Fortran compiler flags")
   else()
     message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
   endif()
+
   set(KNOWN_FORTRAN_COMPILER TRUE)
 endif()
 
@@ -23,6 +24,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
   else()
     message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
   endif()
+
   set(KNOWN_CXX_COMPILER TRUE)
 endif()
 
@@ -38,6 +40,7 @@ if (CMAKE_Fortran_COMPILER_ID MATCHES "Clang" )
   else()
     message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
   endif()
+
   set(KNOWN_FORTRAN_COMPILER TRUE)
 endif()
 
@@ -51,6 +54,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   else()
     message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
   endif()
+
   set(KNOWN_CXX_COMPILER TRUE)
 endif()
 
@@ -58,14 +62,15 @@ endif()
 #
 if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
   if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(${PROJECT_NAME}_Fortran_FLAGS "-g3"
+    set(${PROJECT_NAME}_Fortran_FLAGS "-g3 -stand f95"
       CACHE INTERNAL "${PROJECT_NAME} Fortran compiler flags")
   elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
-    set(${PROJECT_NAME}_Fortran_FLAGS "-O3 -pipe"
+    set(${PROJECT_NAME}_Fortran_FLAGS "-O3 -pipe -stand f95"
       CACHE INTERNAL "${PROJECT_NAME} Fortran compiler flags")
   else()
     message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
   endif()
+
   set(KNOWN_FORTRAN_COMPILER TRUE)
 endif()
 
@@ -79,6 +84,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
   else()
     message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
   endif()
+
   set(KNOWN_CXX_COMPILER TRUE)
 endif()
 

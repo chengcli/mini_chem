@@ -35,6 +35,10 @@ target_include_directories(${namel}_${buildl}
     ${CMAKE_CURRENT_BINARY_DIR}
     )
 
+target_link_libraries(${namel}_${buildl}
+    minichem::minichemf
+    )
+
 configure_file(mini_chem.h.in mini_chem.h @ONLY)
 
 add_library(minichem::minichem++ ALIAS ${namel}_${buildl})

@@ -15,7 +15,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(
   minichem
-  HOMEPAGE_URL https://github.com/chengcli/mini_chem
   LANGUAGES CXX Fortran
   DESCRIPTION "C++ interface to the minichem library"
   )
@@ -37,7 +36,7 @@ message(STATUS "Include ${CMAKE_CURRENT_SOURCE_DIR}/cmake/compilers.cmake")
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/compilers.cmake)
 
 ## 2. set up project source codes ##
-message(STATUS "2. Set up minichem source codes")
+message(STATUS "2. Set up source codes ...")
 add_subdirectory(src_mini_chem_dlsode)
 add_subdirectory(interface)
 
@@ -45,4 +44,5 @@ set(MINICHEM_INCLUDE_DIR
   "${CMAKE_CURRENT_SOURCE_DIR}"
   CACHE PATH "Path to minichem include directory")
 
+message(STATUS "3. Set up unit tests ...")
 add_subdirectory(tests)
